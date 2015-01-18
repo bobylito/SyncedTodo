@@ -49,3 +49,6 @@ dist/
 # Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
 .tmp/
 
+# App.js for the front-end (must be built by grunt)
+public/javascripts/app.js
+
