@@ -14,7 +14,8 @@ var TodoItem = React.createClass({
       labelOrField = <input className="todo-label"
                             type="text"
                             defaultValue={ this.props.item.get('label') }
-                            onBlur={ this.handleBlur }/>;
+                            onBlur={ this.handleBlur }
+                            onKeyUp={ this.handleKeyUp }/>;
       className = "todo-item rise";
     }
     else if( this.props.item.get('isEdited') ){
@@ -45,12 +46,31 @@ var TodoItem = React.createClass({
     } );
   },
   handleBlur : function(){
+    this.save();
+  },
+  handleKeyUp: function( e ){
+    if(e.keyCode === 13){ 
+      this.save();
+    }
+    else if(e.keyCode === 27){
+      this.discard();
+    }
+  },
+  save: function(){
     var value = this.getDOMNode().querySelector( ".todo-label").value;
     this.setState( {
       isUserEditing: false
     } );
     this.props.item.save( {
       label : value,
+      isEdited: false
+    } );
+  },
+  discard: function(){
+    this.setState( {
+      isUserEditing: false
+    } );
+    this.props.item.save( {
       isEdited: false
     } );
   }
