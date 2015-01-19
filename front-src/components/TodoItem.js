@@ -18,7 +18,7 @@ var TodoItem = React.createClass({
                       defaultValue={ this.props.item.get('label') }
                       onBlur={ this.handleBlur }
                       onKeyUp={ this.handleKeyUp }/>
-               <i className="fa fa-trash fa-2x" onClick={this.handleClickDelete}/>
+               <i className="fa fa-trash fa-2x" onMouseDown={this.handleClickDelete}/>
              </li>
     }
     else if( this.props.item.get('isEdited') ){
@@ -82,7 +82,7 @@ var TodoItem = React.createClass({
     } );
   },
   handleClickDelete : function( e ){
-    if( this.props.item.get('isEdited') ) return ;
+    if( this.props.item.get('isEdited') &&  !this.state.isUserEditing ) return ;
     e.stopPropagation();
     var todo  = this.props.item;
     todo.destroy();

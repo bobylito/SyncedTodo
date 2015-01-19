@@ -26,7 +26,6 @@ var setupSocketIO = function setupSocketIO( todoList ){
   });
 
   socket.on('delete', function( todoItem ){
-    console.log("DELETE");
     todoList.get( todoItem.id ).destroy();
   });
 
