@@ -1,11 +1,13 @@
 var Server   = require( 'socket.io' );
+var Backbone = require( 'backbone' );
 var TodoList = require( '../models/TodoList' );
 
 var todos  = new TodoList();
 var server = new Server();
 
+Backbone.sync = function(){return {};}
+
 server.on( 'connection', function( socket ){
-  console.log( "a user connected" );
   socket.emit( 'init', todos.toJSON() );
   socket.on( 'create', function( todoItem ){
     todos.add( todoItem );
@@ -15,13 +17,17 @@ server.on( 'connection', function( socket ){
     todos.get( todoItem.id ).set( todoItem );
     socket.broadcast.emit( 'update', todoItem );
   });
-  /*
-     'create': 'POST',
-     'update': 'PUT',
-     'patch':  'PATCH',
-     'delete': 'DELETE',
-     'read':   'GET'
-  */
+  socket.on('delete', function( todoItem ){
+    var todo = todos.get( todoItem.id );
+    if( !!todo ){
+      todo.destroy();
+      socket.broadcast.emit( 'delete', todoItem );
+      console.log( "todo item deleted" );
+    }
+    else {
+      console.log( "todo item NOT deleted" );
+    }
+  });
 });
 
 module.exports = server;

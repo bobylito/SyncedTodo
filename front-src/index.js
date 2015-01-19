@@ -23,4 +23,8 @@ todos.on("reset", function(){
   React.render( <TodoListComponent list={todos} />, document.getElementById("app") );
 });
 
+todos.on("remove", function(){
+  React.render( <TodoListComponent list={todos} />, document.getElementById("app") );
+});
+
 React.render( <TodoListComponent list={todos} />, document.getElementById("app") );

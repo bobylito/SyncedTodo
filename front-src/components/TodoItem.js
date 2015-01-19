@@ -11,25 +11,32 @@ var TodoItem = React.createClass({
     var labelOrField;
     var className;
     if( this.state.isUserEditing ){
-      labelOrField = <input className="todo-label"
-                            type="text"
-                            defaultValue={ this.props.item.get('label') }
-                            onBlur={ this.handleBlur }
-                            onKeyUp={ this.handleKeyUp }/>;
       className = "todo-item rise";
+      return <li className="todo-item rise" onClick={ this.handleClick }>
+               <input className="todo-label"
+                      type="text"
+                      defaultValue={ this.props.item.get('label') }
+                      onBlur={ this.handleBlur }
+                      onKeyUp={ this.handleKeyUp }/>
+               <i className="fa fa-trash fa-2x" onClick={this.handleClickDelete}/>
+             </li>
     }
     else if( this.props.item.get('isEdited') ){
-      labelOrField = <span className="todo-label disabled">{ this.props.item.get('label') }</span>;
-      className = "todo-item decline";
+      return <li className="todo-item decline" onClick={ this.handleClick }>
+               <span className="todo-label disabled">
+                 { this.props.item.get('label') }
+               </span>
+               <i className="fa fa-trash fa-2x hidden"/>
+             </li>
     }
     else{
-      labelOrField = <span className="todo-label">{ this.props.item.get('label') }</span>;
-      className = "todo-item";
+      return <li className="todo-item" onClick={ this.handleClick }>
+               <span className="todo-label">
+                 { this.props.item.get('label') }
+               </span>
+               <i className="fa fa-trash fa-2x hidden"/>
+             </li>
     }
-
-    return <li className={className} onClick={ this.handleClick }>
-      { labelOrField }
-    </li>;
   },
   componentDidUpdate: function(){
     var dom   = this.getDOMNode();
@@ -73,6 +80,12 @@ var TodoItem = React.createClass({
     this.props.item.save( {
       isEdited: false
     } );
+  },
+  handleClickDelete : function( e ){
+    if( this.props.item.get('isEdited') ) return ;
+    e.stopPropagation();
+    var todo  = this.props.item;
+    todo.destroy();
   }
 });
 

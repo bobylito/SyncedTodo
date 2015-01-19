@@ -51,9 +51,11 @@ h1{
 }
 
 .todo-item {
+  position: relative;
   margin: 10px 5px 20px 5px;
   padding: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: background-color 500ms;
 }
 
 .todo-item.rise{
@@ -62,9 +64,11 @@ h1{
 
 .todo-item.decline{
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background-color: #DDD;
 }
 
 .todo-label{
+  position: relative;
   font-size: 18px;
   margin: 0;
   padding: 0;
@@ -72,15 +76,26 @@ h1{
   width: 100%;
   border-bottom: 2px solid white;
   transition: border 400ms;
+  z-index: 10;
 }
 
 .todo-label::focus{
   border-bottom: 2px solid #FFB74D;
 }
 
+.todo-item > .fa-trash{
+  position: absolute;
+  right: 5px;
+  z-index: 20;
+}
+
 .disabled{
   color: rgba(0,0,0,0.4);
   border-bottom: 2px solid white;
   transition: color 300ms;
+}
+
+.hidden {
+  visibility: hidden;
 }
 

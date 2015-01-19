@@ -14,16 +14,20 @@ var setupSocketIO = function setupSocketIO( todoList ){
   };
 
   socket.on('init', function( todosFromServer ){
-    todoList.reset( todosFromServer );
-    console.log(todosFromServer);
+    todoList.reset( todosFromServer, { collection: todoList } );
   });
 
   socket.on('add', function( todoFromServer ){
-    todoList.add( todoFromServer );
+    todoList.create( todoFromServer );
   });
 
   socket.on('update', function( todoFromServer ){
     todoList.get( todoFromServer.id ).set( todoFromServer );
+  });
+
+  socket.on('delete', function( todoItem ){
+    console.log("DELETE");
+    todoList.get( todoItem.id ).destroy();
   });
 
   return socketIoSync;
