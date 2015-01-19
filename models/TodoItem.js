@@ -3,8 +3,8 @@ var Backbone = require('backbone');
 var TodoItem = Backbone.Model.extend({
   defaults: {
     label   : "",
-    created : Date.now(),
-    modified: Date.now(),
+    created : 0,
+    modified: 0,
     isEdited: false
   },
   validate: function( attrs, options ){

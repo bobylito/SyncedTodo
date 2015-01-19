@@ -1,9 +1,15 @@
-var React = require('React/addons');
+var React    = require('React/addons');
+var TodoItem = require('./TodoItem');
 
 var TodoList = React.createClass({
   render : function(){
-    return <div>Hello</div>
+    var todos = this.props.list.map( function(item){
+      return <TodoItem item={item} />;
+    });
+    return <ul className="todos">
+             {todos}
+           </ul>;
   }
 });
 
-module.exports = Todo;
+module.exports = TodoList;

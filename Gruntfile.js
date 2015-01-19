@@ -12,7 +12,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      files: ['./front-src/**/*'],
+      files: ['./front-src/**/*', './models/**/*'],
       tasks: ['build']
     },
   })

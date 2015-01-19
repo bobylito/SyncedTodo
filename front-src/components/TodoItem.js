@@ -6,4 +6,4 @@ var TodoItem = React.createClass({
   }
 });
 
-module.exports = Todo;
+module.exports = TodoItem;
