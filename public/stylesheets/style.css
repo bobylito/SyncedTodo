@@ -74,11 +74,12 @@ li{
 .todo-label{
   position: relative;
   display: block;
+  width: 90%;
+  height: 20px;
   font-size: 18px;
   margin: 0;
   padding: 0;
   border: 0;
-  width: 90%;
   border-bottom: 2px solid #EEE;
   transition: border 400ms;
   z-index: 10;
