@@ -15,4 +15,9 @@ todos.create( );
 todos.create( );
 todos.create( );
 
+todos.on("change", function(){
+  console.log( arguments, todos );
+  React.render( <TodoListComponent list={todos} />, document.getElementById("app") );
+});
+
 React.render( <TodoListComponent list={todos} />, document.getElementById("app") );
