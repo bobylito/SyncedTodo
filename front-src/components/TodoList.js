@@ -6,9 +6,15 @@ var TodoList = React.createClass({
     var todos = this.props.list.map( function(item){
       return <TodoItem item={item} key={item.cid}/>;
     });
-    return <ul className="todos">
-             {todos}
-           </ul>;
+    return <div className="todosContainer">
+      <div className="add" onClick={ this.addItem }>+</div>
+      <ul className="todos">
+        {todos}
+      </ul>
+    </div>;
+  },
+  addItem: function(){
+    this.props.list.create();
   }
 });
 

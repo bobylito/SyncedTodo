@@ -14,7 +14,7 @@ var TodoItem = React.createClass({
                             type="text"
                             defaultValue={ this.props.item.get('label') }
                             onBlur={ this.handleBlur }/>;
-    else if( this.props.isEdited )
+    else if( this.props.item.get('isEdited') )
       labelOrField = <span className="todo-label disabled">{ this.props.item.get('label') }</span>;
     else
       labelOrField = <span className="todo-label">{ this.props.item.get('label') }</span>;
@@ -32,7 +32,7 @@ var TodoItem = React.createClass({
     this.setState( {
       isUserEditing: true
     } );
-    this.props.item.save( { 
+    this.props.item.save( {
       isEdited: true
     } );
   },
@@ -41,7 +41,7 @@ var TodoItem = React.createClass({
     this.setState( {
       isUserEditing: false
     } );
-    this.props.item.save( { 
+    this.props.item.save( {
       label : value,
       isEdited: false
     } );
