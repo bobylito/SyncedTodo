@@ -9,19 +9,26 @@ var TodoItem = React.createClass({
   },
   render : function(){
     var labelOrField;
-    if( this.state.isUserEditing )
+    var className;
+    if( this.state.isUserEditing ){
       labelOrField = <input className="todo-label"
                             type="text"
                             defaultValue={ this.props.item.get('label') }
                             onBlur={ this.handleBlur }/>;
-    else if( this.props.item.get('isEdited') )
+      className = "todo-item rise";
+    }
+    else if( this.props.item.get('isEdited') ){
       labelOrField = <span className="todo-label disabled">{ this.props.item.get('label') }</span>;
-    else
+      className = "todo-item decline";
+    }
+    else{
       labelOrField = <span className="todo-label">{ this.props.item.get('label') }</span>;
+      className = "todo-item";
+    }
 
-    return <li onClick={ this.handleClick }>
+    return <li className={className} onClick={ this.handleClick }>
       { labelOrField }
-    </li>
+    </li>;
   },
   componentDidUpdate: function(){
     var dom   = this.getDOMNode();

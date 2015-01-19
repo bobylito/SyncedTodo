@@ -7,7 +7,7 @@ var TodoList = React.createClass({
       return <TodoItem item={item} key={item.cid}/>;
     });
     return <div className="todosContainer">
-      <div className="add" onClick={ this.addItem }>+</div>
+      <div className="add" onClick={ this.addItem }></div>
       <ul className="todos">
         {todos}
       </ul>

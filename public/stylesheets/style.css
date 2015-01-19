@@ -1,12 +1,68 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html{
+  height:100%;
 }
 
-a {
-  color: #00B7FF;
+body {
+  min-height:100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+textarea:focus, input:focus{
+  outline: 0;
+}
+
+#app{
+  height:100%;
+}
+
+.todosContainer{
+}
+
+.add{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  color: white;
+  background: #FF9800;
+  border-radius: 20px;
+  text-align: center;
+}
+.add::before{
+  position: absolute;
+  content: '+';
+  bottom: 5px;
+  right: 7.5px;
+}
+
+.todos {
+  padding: 0;
+}
+
+.todo-item {
+  margin: 10px 5px 20px 5px;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.todo-item.rise{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.todo-item.decline{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.todo-label{
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
 }
 
 .disabled{
   background: red;
 }
+
