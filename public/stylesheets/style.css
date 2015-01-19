@@ -20,6 +20,10 @@ h1{
   font-family: "helvetica neue";
 }
 
+li{
+  list-style-type: none;
+}
+
 #app{
   height:100%;
 }
@@ -69,23 +73,25 @@ h1{
 
 .todo-label{
   position: relative;
+  display: block;
   font-size: 18px;
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100%;
-  border-bottom: 2px solid white;
+  width: 90%;
+  border-bottom: 2px solid #EEE;
   transition: border 400ms;
   z-index: 10;
 }
 
-.todo-label::focus{
+input.todo-label{
   border-bottom: 2px solid #FFB74D;
 }
 
 .todo-item > .fa-trash{
   position: absolute;
-  right: 5px;
+  right: 10px;
+  top: 10px;
   z-index: 20;
 }
 
