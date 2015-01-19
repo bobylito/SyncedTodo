@@ -36,6 +36,7 @@ var TodoItem = React.createClass({
     label.focus();
   },
   handleClick : function(){
+    if( this.props.item.get('isEdited') ) return ;
     this.setState( {
       isUserEditing: true
     } );

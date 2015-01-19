@@ -10,6 +10,16 @@ textarea:focus, input:focus{
   outline: 0;
 }
 
+h1{
+  margin: 0;
+  text-align: center;
+  background: #00BCD4;
+  padding: 10px;
+  color: white;
+  font-weight: lighter;
+  font-family: "helvetica neue";
+}
+
 #app{
   height:100%;
 }
@@ -60,9 +70,17 @@ textarea:focus, input:focus{
   padding: 0;
   border: 0;
   width: 100%;
+  border-bottom: 2px solid white;
+  transition: border 400ms;
+}
+
+.todo-label::focus{
+  border-bottom: 2px solid #FFB74D;
 }
 
 .disabled{
-  background: red;
+  color: rgba(0,0,0,0.4);
+  border-bottom: 2px solid white;
+  transition: color 300ms;
 }
 
